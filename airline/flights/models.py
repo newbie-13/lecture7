@@ -18,6 +18,9 @@ class Flight(models.Model):
     #if the airport is deleted, all the flights associated with that airport are deleted as well
     duration = models.IntegerField()
 
+    def is_valid_flight(self):
+        return (self.origin != self.destination) and (self.duration >= 0)
+
     def __str__(self):
         return f"{self.id} - {self.origin} to {self.destination}"
 
